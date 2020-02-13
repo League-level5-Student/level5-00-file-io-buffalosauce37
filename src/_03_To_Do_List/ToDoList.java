@@ -1,10 +1,15 @@
 package _03_To_Do_List;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class ToDoList {
+public class ToDoList implements ActionListener {
 	/*
 	 * Create a program with five buttons, add task, view tasks, remove task, save list, and load list. 
 	 * 
@@ -25,20 +30,38 @@ public class ToDoList {
 	 * 
 	 * When the program starts, it should automatically load the last saved file into the list.
 	 */
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton button1 = new JButton("add");
+	JButton button2 = new JButton("view");
+	JButton button3 = new JButton("remove");
+	JButton button4 = new JButton("save");
+	JButton button5 = new JButton("load");
+	ArrayList<String> tasks = new ArrayList();
 	void SetUp(){
-		JFrame frame = new JFrame();
-		JPanel panel = new JPanel();
-		JButton button1 = new JButton("add");
-		JButton button2 = new JButton("view");
-		JButton button3 = new JButton("remove");
-		JButton button4 = new JButton("save");
-		JButton button5 = new JButton("load");
-		frame.add(panel);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
 		panel.add(button4);
 		panel.add(button5);
-		
+		frame.add(panel);
+		frame.setVisible(true);
+		frame.pack();
+		button1.addActionListener(this);
+		button2.addActionListener(this);
+		button3.addActionListener(this);
+		button4.addActionListener(this);
+		button5.addActionListener(this);
+	}
+	public static void main(String[] args) {
+		ToDoList bruh = new ToDoList();
+		bruh.SetUp();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()== button1) {
+			tasks.add(JOptionPane.showInputDialog("bruh"));
+		}
 	}
 }
